@@ -23,6 +23,7 @@ module.exports = yeoman.Base.extend({
     // ]).then(function(answer){
     //   this.permission = answer['permission'];
     // }.bind(this));
+    //
 
     var questions = [
       {
