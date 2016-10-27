@@ -1,4 +1,4 @@
-# generator-simple-license [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# generator-simple-license [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage Status](https://coveralls.io/repos/github/bigbeno37/generator-simple-license/badge.svg?branch=master)](https://coveralls.io/github/bigbeno37/generator-simple-license?branch=master)
 > Easily create and choose the right license for your project!
 
 ## Installation
