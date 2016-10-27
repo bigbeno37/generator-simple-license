@@ -6,13 +6,13 @@ var helpers = require('yeoman-test');
 describe('generator-simple-license:app', function () {
   before(function () {
     return helpers.run(path.join(__dirname, '../generators/app'))
-      .withPrompts({someAnswer: true})
+      .withPrompts({name: 'TESTNAME', mit: true, apache: false, GNU: false})
       .toPromise();
   });
 
   it('creates files', function () {
     assert.file([
-      'dummyfile.txt'
+      'LICENSE.md'
     ]);
   });
 });
