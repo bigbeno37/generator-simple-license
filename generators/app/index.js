@@ -1,30 +1,10 @@
 'use strict';
 var yeoman = require('yeoman-generator');
-// var chalk = require('chalk');
-// var yosay = require('yosay');
 
 module.exports = yeoman.Base.extend({
+  // Prompt the user with some questions
   prompting: function () {
-    // return this.prompt([
-    // {
-    //   type: 'list',
-    //   name: 'permission',
-    //   choices: ['yes', 'no'],
-    //   message: 'Should I copy the file?'
-    // },
-    // {
-    //   type: 'input',
-    //   name: 'justsomeinput',
-    //   message: 'and now?',
-    //   when: function(answers){
-    //     return answers['permission'] == 'no';
-    //   }
-    // }
-    // ]).then(function(answer){
-    //   this.permission = answer['permission'];
-    // }.bind(this));
-    //
-
+    // Define the questions that will be asked
     var questions = [
       {
         type: 'input',
@@ -41,6 +21,7 @@ module.exports = yeoman.Base.extend({
         type: 'confirm',
         name: 'apache',
         message: 'Are you concerned about patents?',
+        // Only ask this question when the mit prompt is false
         when: function (answers) {
           return !answers.mit;
         }
@@ -49,12 +30,14 @@ module.exports = yeoman.Base.extend({
         type: 'confirm',
         name: 'GNU',
         message: 'Do you care about sharing improvements?',
+        // Only ask this question when both the apache prompt and mit prompt are false
         when: function (answers) {
           return !answers.apache && !answers.mit;
         }
       }
     ];
 
+    // When the user enters in their answer, choose what this.license will be
     return this.prompt(questions).then(function (answer) {
       this.name = answer.name;
 
@@ -68,21 +51,15 @@ module.exports = yeoman.Base.extend({
     }.bind(this));
   },
 
+  // Begin writing / copying files over
   writing: function () {
-    // this.log(this.license);
-    if (this.license === 'mit') {
-      this.fs.copyTpl(
-        this.templatePath('mit'),
-        this.destinationPath('LICENSE.md'),
-        {
-          year: new Date().getFullYear(),
-          name: this.name
-        }
-      );
-    }
-  },
-
-  _install: function () {
-    this.installDependencies();
+    this.fs.copyTpl(
+      this.templatePath(this.license),
+      this.destinationPath('LICENSE.md'),
+      {
+        year: new Date().getFullYear(),
+        name: this.name
+      }
+    );
   }
 });
