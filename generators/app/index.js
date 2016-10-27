@@ -54,9 +54,13 @@ module.exports = yeoman.Base.extend({
   // Begin writing / copying files over
   writing: function () {
     this.fs.copyTpl(
+      // Get the license specified above
       this.templatePath(this.license),
+      // And send it to the destination as LICENSE.md
       this.destinationPath('LICENSE.md'),
       {
+        // Replace the following variables with the 
+        // current year and prompted name respectively
         year: new Date().getFullYear(),
         name: this.name
       }

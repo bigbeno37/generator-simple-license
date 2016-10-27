@@ -36,28 +36,36 @@ describe('generator-simple-license:app', function () {
     });
   });
 
+  // Describe unit tests for Apache 2.0 license generation
   describe('apache', function () {
+    // Beforehand, run the generator with the following values
     before(function () {
       return runGenerator('TESTNAME', false, true, false);
     });
 
+    // The generator should create an Apache 2.0 license file with correct information
     it('creates an Apache 2.0 license with correct information', function () {
       var license = convertFileToString('apache', 'TESTNAME');
       var file = fs.readFileSync('LICENSE.md', 'utf8');
 
+      // Assert that the content of LICENSE.md equals what is expected
       assert.textEqual(file, license);
     });
   });
 
+  // Describe unit tests for GNU license generation
   describe('GNU', function () {
+    // Beforehand, run the generator with the following values
     before(function () {
       return runGenerator('TESTNAME', false, false, true);
     });
 
+    // The generator should create a GNU license file with correct information
     it('creates a GNU license with correct information', function () {
       var license = convertFileToString('GNU', 'TESTNAME');
       var file = fs.readFileSync('LICENSE.md', 'utf8');
 
+      // Assert that the content of LICENSE.md equals what is expected
       assert.textEqual(file, license);
     });
   });
