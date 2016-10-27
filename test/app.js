@@ -14,5 +14,6 @@ describe('generator-simple-license:app', function () {
     assert.file([
       'LICENSE.md'
     ]);
+    done();
   });
 });
