@@ -59,7 +59,7 @@ module.exports = yeoman.Base.extend({
       // And send it to the destination as LICENSE.md
       this.destinationPath('LICENSE.md'),
       {
-        // Replace the following variables with the 
+        // Replace the following variables with the
         // current year and prompted name respectively
         year: new Date().getFullYear(),
         name: this.name
